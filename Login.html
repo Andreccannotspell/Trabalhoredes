@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Login e Registro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        .login-form {
+            max-width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .register-link {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: underline;
+            color: #008000;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="login-form" class="login-form">
+        <h2>Login</h2>
+        <form id="login" action="#" method="post" onsubmit="submitForm('login')">
+            <div class="form-group">
+                <label for="username">Nome do utilizador:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Entrar</button>
+        </form>
+        <a href="#" class="register-link" onclick="showForm('register')">Registrar-se</a>
+    </div>
+
+    <div id="register-form" class="login-form" style="display: none;">
+        <h2>Registro</h2>
+        <form id="register" action="#" method="post" onsubmit="submitForm('register')">
+            <div class="form-group">
+                <label for="newUsername">Nome de Utilizador:</label>
+                <input type="text" id="newUsername" name="newUsername" required>
+            </div>
+            <div class="form-group">
+                <label for="newEmail">E-mail:</label>
+                <input type="email" id="newEmail" name="newEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="newPassword">Password:</label>
+                <input type="password" id="newPassword" name="newPassword" required>
+            </div>
+            <div class="form-group">
+                <label for="newPhone">Número de Telefone:</label>
+                <input type="tel" id="newPhone" name="newPhone" required>
+            </div>
+            <div class="form-group">
+                <label for="dob">Data de Nascimento:</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Morada:</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="postalCode">Código Postal:</label>
+                <input type="text" id="postalCode" name="postalCode" required>
+            </div>
+            <div class="form-group">
+                <label for="nationality">Nacionalidade:</label>
+                <input type="text" id="nationality" name="nationality" required>
+            </div>
+            <div class="form-group">
+                <label for="nif">NIF:</label>
+                <input type="text" id="nif" name="nif" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Género:</label>
+                <select id="gender" name="gender" required>
+                    <option value="masculino">Masculino</option>
+                    <option value="feminino">Feminino</option>
+                    <option value="outro">Outro</option>
+                </select>
+            </div>
+            <button type="submit">Registrar</button>
+        </form>
+    </div>
+    
+
+    <div id="thanks-register" class="login-form" style="display: none;">
+        <h2>Obrigado por se registrar</h2>
+    </div>
+
+    <div id="thanks-login" class="login-form" style="display: none;">
+        <h2>Obrigado por entrar</h2>
+    </div>
+
+    <script>
+        function showForm(formToShow) {
+            document.getElementById('login-form').style.display = formToShow === 'login' ? 'block' : 'none';
+            document.getElementById('register-form').style.display = formToShow === 'register' ? 'block' : 'none';
+            document.getElementById('thanks-register').style.display = formToShow === 'thanks-register' ? 'block' : 'none';
+            document.getElementById('thanks-login').style.display = formToShow === 'thanks-login' ? 'block' : 'none';
+        }
+    
+        function submitForm(formType) {
+            event.preventDefault();
+    
+            if (formType === 'login') {
+                var username = document.getElementById('username').value;
+                var password = document.getElementById('password').value;
+    
+                if (username && password) {
+                    showForm('thanks-login');
+                    setTimeout(function () {
+                        window.location.href = "heeeeeeeeeeeeelp.html";
+                    }, 3000);
+                }
+    
+            } else if (formType === 'register') {
+                var newUsername = document.getElementById('newUsername').value;
+                var newEmail = document.getElementById('newEmail').value;
+                var newPhone = document.getElementById('newPhone').value;
+                var newPassword = document.getElementById('newPassword').value;
+                var dob = document.getElementById('dob').value;
+                var address = document.getElementById('address').value;
+                var postalCode = document.getElementById('postalCode').value;
+                var nationality = document.getElementById('nationality').value;
+                var nif = document.getElementById('nif').value;
+                var gender = document.getElementById('gender').value;
+    
+                if (newUsername && newEmail && newPhone && newPassword && dob && address && postalCode && nationality && nif && gender) {
+                    showForm('thanks-register');
+                    setTimeout(function () {
+                        showForm('login');
+                    }, 3000);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
